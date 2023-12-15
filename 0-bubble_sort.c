@@ -7,6 +7,8 @@ void bubble_sort(int *array, size_t size)
 {
     size_t i;
     int temp, thereisSwap = 1;
+
+    if (size < 2) return;
     while(thereisSwap)
     {
         i = 0;
