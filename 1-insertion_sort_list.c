@@ -17,32 +17,22 @@ void insertion_sort_list(listint_t **list)
 	while (node != NULL)
 	{
 		savedNode = node->next;
-		if (node->prev->n > node->n)
+		while (node->prev != NULL && node->prev->n > node->n)
 		{
-			while (node->prev != NULL)
+			node->prev->next = node->next;
+			if (node->next != NULL)
+				node->next->prev = node->prev;
+			node->next = node->prev;
+			node->prev = node->prev->prev;
+			node->next->prev = node;
+			/* check for nullptr here*/
+			if (node->prev)
+				node->prev->next = node;
+			else
 			{
-				if (node->prev->n > node->n)
-				{
-					node->prev->next = node->next;
-					if (node->next != NULL)
-						node->next->prev = node->prev;
-					node->next = node->prev;
-					node->prev = node->prev->prev;
-					node->next->prev = node;
-					/* check for nullptr here*/
-					if (node->prev)
-						node->prev->next = node;
-					else
-					{
-						HEAD = node;
-					}
-					print_list(HEAD);
-				}
-				else
-				{
-					break;
-				}
+				HEAD = node;
 			}
+			print_list(HEAD);
 		}
 		node = savedNode;
 	}
