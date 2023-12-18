@@ -1,12 +1,10 @@
 #include "sort.h"
 
-
 /**
- * selection_sort - Returns the number of elements
- * @array: A pointer to the head of the listint_t list.
- * @size: A pointer to the head of the listint_t list.
- *
- * Return: The number of elements in the listint_t list.
+ * selection_sort - Sort by selection
+ * @array: array of int.
+ * @size: size of array.
+ * Return: Nothing - void function
  */
 void selection_sort(int *array, size_t size)
 {
