@@ -19,7 +19,6 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 	{
 		return;
 	}
-	print_array(orgArr, orgSize);
 	while (i != size - 1)
 	{
 		if (array[i] < pivot)
@@ -30,6 +29,7 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 				tmp = array[i];
 				array[i] = array[splitIndex];
 				array[splitIndex] = tmp;
+				print_array(orgArr, orgSize);
 			}
 			++i;
 		}
@@ -42,12 +42,14 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 	tmp = array[splitIndex];
 	array[splitIndex] = array[size - 1];
 	array[size - 1] = tmp;
+	print_array(orgArr, orgSize);
 
-	/* Recursion call*/
+		/* Recursion call*/
 	if (splitIndex != 0)
 		my_quick_sort(array, splitIndex, orgArr, orgSize);
 	if (splitIndex + 1 != size)
 		my_quick_sort(&array[splitIndex + 1], size - splitIndex - 1, orgArr, orgSize);
+
 }
 
 void quick_sort(int *array, size_t size)
