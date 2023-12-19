@@ -39,10 +39,13 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 		}
 	}
 	++splitIndex;
-	tmp = array[splitIndex];
-	array[splitIndex] = array[size - 1];
-	array[size - 1] = tmp;
-	print_array(orgArr, orgSize);
+	if (array[splitIndex] != array[size -1])
+	{
+		tmp = array[splitIndex];
+		array[splitIndex] = array[size - 1];
+		array[size - 1] = tmp;
+		print_array(orgArr, orgSize);
+	}
 
 		/* Recursion call*/
 	if (splitIndex != 0)
