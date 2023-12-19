@@ -42,6 +42,7 @@ void quick_sort(int *array, size_t size)
 	tmp = array[splitIndex];
 	array[splitIndex] = array[size - 1];
 	array[size - 1] = tmp;
+	print_array(array, size);
 
 	/* Recursion call*/
 	if (splitIndex != 0)
