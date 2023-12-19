@@ -7,19 +7,19 @@
  * Return: Nothing - void function
  */
 
-void quick_sort(int *array, size_t size)
+
+void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 {
 	size_t splitIndex = -1;
 	size_t i = 0;
 	size_t tmp = 0;
-
 	/* The element where we will find its right place and do the split around it*/
 	int pivot = array[size - 1];
-
 	if (size == 1)
 	{
 		return;
 	}
+	print_array(orgArr, orgSize);
 	while (i != size - 1)
 	{
 		if (array[i] < pivot)
@@ -42,12 +42,15 @@ void quick_sort(int *array, size_t size)
 	tmp = array[splitIndex];
 	array[splitIndex] = array[size - 1];
 	array[size - 1] = tmp;
-	print_array(array, size);
 
 	/* Recursion call*/
 	if (splitIndex != 0)
-		quick_sort(array, splitIndex);
+		my_quick_sort(array, splitIndex, orgArr, orgSize);
 	if (splitIndex + 1 != size)
-		quick_sort(&array[splitIndex + 1], size - splitIndex - 1);
+		my_quick_sort(&array[splitIndex + 1], size - splitIndex - 1, orgArr, orgSize);
 }
 
+void quick_sort(int *array, size_t size)
+{
+	my_quick_sort(array, size, array, size);
+}
