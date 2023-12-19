@@ -1,12 +1,13 @@
 #include "sort.h"
 
 /**
- * quick_sort - Sort by quick sort
+ * my_quick_sort - Sort by quick sort
  * @array: array of size_t.
  * @size: size of array.
+ * @orgArr: the orginal array to be passed every time for printing
+ * @orgSize: the orginal size to be passed every time for printing
  * Return: Nothing - void function
  */
-
 
 void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 {
@@ -15,10 +16,9 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 	size_t tmp = 0;
 	/* The element where we will find its right place and do the split around it*/
 	int pivot = array[size - 1];
+
 	if (size == 1)
-	{
 		return;
-	}
 	while (i != size - 1)
 	{
 		if (array[i] < pivot)
@@ -34,12 +34,10 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 			++i;
 		}
 		else
-		{
 			++i;
-		}
 	}
 	++splitIndex;
-	if (array[splitIndex] != array[size -1])
+	if (array[splitIndex] != array[size - 1])
 	{
 		tmp = array[splitIndex];
 		array[splitIndex] = array[size - 1];
@@ -51,9 +49,16 @@ void my_quick_sort(int *array, size_t size, int *orgArr, int orgSize)
 	if (splitIndex != 0)
 		my_quick_sort(array, splitIndex, orgArr, orgSize);
 	if (splitIndex + 1 != size)
-		my_quick_sort(&array[splitIndex + 1], size - splitIndex - 1, orgArr, orgSize);
-
+		my_quick_sort(&array[splitIndex + 1],
+						size - splitIndex - 1, orgArr, orgSize);
 }
+
+/**
+ * quick_sort - Sort by quick sort
+ * @array: array of size_t.
+ * @size: size of array.
+ * Return: Nothing - void function
+ */
 
 void quick_sort(int *array, size_t size)
 {
